@@ -1,13 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Header from '../component/Header'
-import Home from '../component/Home'
-import About from '../component/About'
-import EnsureLoggedIn from '../component/EnsureLoggedIn'
-import SingOut from '../component/SingOut'
-import Login from "../component/Login"
-import Register from "../component/Register"
-import AllUsers from "../component/AllUsers"
+import {
+  Header,
+  Home,
+  About,
+  EnsureLoggedIn,
+  SingOut,
+  Login,Register,
+  AllUsers
+} from "../component"
 import { getItem, setItem, removeItem } from '../storage'
 import {UserContext} from '../context/userContext'
 export default class MainRoutes extends React.Component {
