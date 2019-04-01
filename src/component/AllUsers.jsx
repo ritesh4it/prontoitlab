@@ -43,7 +43,7 @@ class AllUsers extends React.Component {
           title={row.userName}
           onClick={_ => {
             return;
-            // props.history.push('star-wars/' + id)
+            // props.history.push('user/' + id)
           }}
           key={row.id}
         >

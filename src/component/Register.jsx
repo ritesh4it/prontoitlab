@@ -100,7 +100,7 @@ class RegisterPage extends Component {
             value="male"
             checked={this.state.gender === 'male'}
           />{' '}
-          Male<br />
+          Male {' '}
           <input
             onChange={this.handleGenderChange}
             type="radio"
@@ -109,7 +109,7 @@ class RegisterPage extends Component {
             value="female"
             checked={this.state.gender === 'female'}
           />{' '}
-          Female<br />
+          Female{' '}
           <input
             onChange={this.handleGenderChange}
             type="radio"
@@ -118,7 +118,7 @@ class RegisterPage extends Component {
             value="other"
             checked={this.state.gender === 'other'}
           />{' '}
-          Other
+          Other <br/><br/>
           <input type="submit" value="Sign Up" data-test="submit" />
         </form>
       </div>
