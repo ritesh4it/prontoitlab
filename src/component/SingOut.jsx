@@ -1,18 +1,18 @@
 import React from 'react'
 import { removeItem } from '../storage'
-import {UserContext} from "../context/userContext"
- class SignOut extends React.Component {
-  componentDidMount () {
+import { UserContext } from "../context/userContext"
+class SignOut extends React.Component {
+  componentDidMount() {
     removeItem('user')
     removeItem('token')
     this.context.clearUser()
   }
-  render () {
+  render() {
     return (
-     null
+      null
     )
   }
 }
 
-SignOut.contextType=UserContext
+SignOut.contextType = UserContext
 export default SignOut;

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 import { Link } from 'react-router-dom'
-import {UserContext} from "../context/userContext"
+import { UserContext } from "../context/userContext"
 //  class Header extends React.Component {
 //   render () {
 //     debugger
@@ -24,34 +24,35 @@ import {UserContext} from "../context/userContext"
 //           {getUser(props)}
 //         </ul>)}
 //         }
-       
+
 //       </UserContext.Consumer>
 //     )
 //   }
 // }
 
-function Header(){
+function Header() {
   return (
     <UserContext.Consumer>
-      {(value)=>{
-        return( <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/all-users">All Users</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        {getUser(value)}
-      </ul>)}
+      {(value) => {
+        return (<ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/all-users">All Users</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          {getUser(value)}
+        </ul>)
       }
-     
+      }
+
     </UserContext.Consumer>
   )
 }
-function getUser (value={}) {
+function getUser(value = {}) {
   if (value.user) {
     return (
       <li>
@@ -60,15 +61,15 @@ function getUser (value={}) {
     )
   } else {
     return (
-     <React.Fragment>
+      <React.Fragment>
 
-     <li>
-        <Link to="/sign-in">Sign In</Link>
-      </li>
-      <li>
-        <Link to="/register">Sign Up</Link>
-      </li>
-     </React.Fragment>
+        <li>
+          <Link to="/sign-in">Sign In</Link>
+        </li>
+        <li>
+          <Link to="/register">Sign Up</Link>
+        </li>
+      </React.Fragment>
     )
   }
 }

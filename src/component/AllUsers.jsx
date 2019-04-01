@@ -1,30 +1,30 @@
 import React from 'react'
-import{get} from "../api"
+import { get } from "../api"
 import { UserContext } from '../context/userContext';
 class AllUsers extends React.Component {
   state = {
-    pages:0,
-    size:25,
-    loading:false,
-    data:[]
+    pages: 0,
+    size: 25,
+    loading: false,
+    data: []
   }
-  fetchData=(loading)=>{
-    if(loading){
-      this.setState({loading:true})
+  fetchData = (loading) => {
+    if (loading) {
+      this.setState({ loading: true })
     }
-    if(this.state.totalPages && this.state.pages>this.state.totalPages){
+    if (this.state.totalPages && this.state.pages > this.state.totalPages) {
       return;
     }
-    return get('',{
-      page:this.state.pages,
-      size:this.state.size
-    },{
-      headers:{
-        "X-AUTH-TOKEN":this.context.token,
-      }
-    }).then(data=>{
-      this.setState({totalPages:data.totalPages,data:[...this.state.data,...data.content],pages:this.state.pages+1})
-    })
+    return get('', {
+      page: this.state.pages,
+      size: this.state.size
+    }, {
+        headers: {
+          "X-AUTH-TOKEN": this.context.token,
+        }
+      }).then(data => {
+        this.setState({ totalPages: data.totalPages, data: [...this.state.data, ...data.content], pages: this.state.pages + 1 })
+      })
   }
   listenScrollEvent(event) {
     var node = event.target
@@ -33,7 +33,7 @@ class AllUsers extends React.Component {
       this.fetchData(true)
     }
   }
-  componentDidMount(){
+  componentDidMount() {
     this.fetchData()
   }
   populateListRow = (props) => {
@@ -49,7 +49,7 @@ class AllUsers extends React.Component {
         >
           <label>Name : </label>
           <span >{row.userName}</span>
-          <br/>
+          <br />
           <label>Gender : </label>
           <span >{row.gender}</span>
         </div>
@@ -64,16 +64,16 @@ class AllUsers extends React.Component {
         }}
       >
         <div
-            key="list"
-            className="flex-container"
-            onScroll={this.listenScrollEvent.bind(this)}
-          >
-            {this.populateListRow(this.state)}
-          </div>
+          key="list"
+          className="flex-container"
+          onScroll={this.listenScrollEvent.bind(this)}
+        >
+          {this.populateListRow(this.state)}
+        </div>
       </div>
     )
   }
 }
 
-AllUsers.contextType=UserContext
+AllUsers.contextType = UserContext
 export default AllUsers

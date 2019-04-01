@@ -6,37 +6,38 @@ import {
   About,
   EnsureLoggedIn,
   SingOut,
-  Login,Register,
+  Login, Register,
   AllUsers
 } from "../component"
 import { getItem, setItem, removeItem } from '../storage'
-import {UserContext} from '../context/userContext'
+import { UserContext } from '../context/userContext'
 export default class MainRoutes extends React.Component {
-  constructor(props,context) {
-    super(props,context)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
       user: getItem('user'),
-      token:getItem('token')
+      token: getItem('token')
     }
   }
   setUser = loginInfo => {
     setItem('user', loginInfo.user)
     setItem('token', loginInfo.token)
-    this.setState({ user: loginInfo.user,token:loginInfo.token})
+    this.setState({ user: loginInfo.user, token: loginInfo.token })
   }
   clearUser = () => {
     removeItem('user')
     removeItem('token')
-    this.setState({token:null, user: null })
+    this.setState({ token: null, user: null })
   }
   render() {
 
     return (
       <Router>
-        <UserContext.Provider value={{user:this.state.user,token:this.state.token,
-          setUser:this.setUser,
-          clearUser:this.clearUser
-          }}>
+        <UserContext.Provider value={{
+          user: this.state.user, token: this.state.token,
+          setUser: this.setUser,
+          clearUser: this.clearUser
+        }}>
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
